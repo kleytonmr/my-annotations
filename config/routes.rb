@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root 'sessions#index'
+  devise_for :users
 
-  resources :sessions
+  resources :notes
+  root 'notes#index'
 end
