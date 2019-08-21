@@ -25,10 +25,10 @@
             <% if user_signed_in? %>
             <a class="dropdown-item" href="#"><strong><%= current_user.email %></strong></a>
             <div class="dropdown-divider"></div>
-              <%= link_to 'Editar perfil', edit_user_registration_path, :class => 'dropdown-item'%>
+              <%= link_to 'Edit user', edit_user_registration_path, :class => 'dropdown-item'%>
               <%= link_to "Logout", destroy_user_session_path, method: :delete, :class => 'dropdown-item'%>
             <% else %>
-              <%= link_to "Registrar-se", new_user_registration_path, :class => 'dropdown-item'%>
+              <%= link_to "Register", new_user_registration_path, :class => 'dropdown-item'%>
               <%= link_to "Login", new_user_session_path, :class => 'dropdown-item'%>
             <% end %>
           </div>
