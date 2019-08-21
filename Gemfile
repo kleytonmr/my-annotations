@@ -12,6 +12,10 @@ gem 'rails_12factor'
 
 gem 'dotenv-rails'
 
+gem 'bootstrap', '~> 4.3.1'
+
+gem 'jquery-rails'
+
 gem 'devise'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
