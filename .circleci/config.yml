@@ -5,11 +5,28 @@ orbs:
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.6.3-stretch-node
+      - image: circleci/ruby:2.5.1-stretch-node
     executor: ruby/default
     steps:
       - checkout
+      # Which version of bundler?
       - run:
           name: Which bundler?
           command: bundle -v
-      - ruby/bundle-install
+      - run:
+          name: Remove Gemfile.lock
+          command: rm Gemfile.lock
+
+      # bundle cache
+      - restore_cache:
+          keys:
+            - my-annotations-{{ checksum "Gemfile.lock" }}
+            - my-annotations-
+      - run:
+          name: Bundle Install
+          command: bundle check || bundle install
+      # Store bundle cache
+      - save_cache:
+          key: my-annotations-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
