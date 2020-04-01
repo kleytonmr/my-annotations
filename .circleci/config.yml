@@ -14,9 +14,8 @@ jobs:
           name: Which bundler?
           command: bundle -v
       - run:
-          name: Remove Gemfile.lock
+          name: remove lock
           command: rm Gemfile.lock
-
       # bundle cache
       - restore_cache:
           keys:
